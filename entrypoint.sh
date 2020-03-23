@@ -11,7 +11,7 @@ IMAGE=$7
 ALLOW=$8
 
 # Make temp authfile
-echo -n $AUTH_FILE > /tmp/auth.json
+cat $AUTH_FILE
 
 # Activate account
 if gcloud auth activate-service-account $EMAIL --key-file=/tmp/auth.json ; then
