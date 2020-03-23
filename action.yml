@@ -1,0 +1,52 @@
+# action.yml
+name: 'Cloud Run helper'
+author: '3sky'
+description: 'Deploy, update or delete your Cloud Run service'
+branding:
+  icon: 'check-square'
+  color: 'white'
+inputs:
+  email:
+    description: 'Email of service account'
+    required: true
+    default: 'my-json-server.typicode.com'
+  auth_file:
+    description: 'Auth file encoded with base64'
+    required: true
+    default: ''
+  action:
+    description: 'Action to perform run/update/delete'
+    required: true
+    default: 'update'
+  name:
+    description: 'Name of service'
+    required: true
+    default: 'My-service'
+  region:
+    description: 'Region for deployment'
+    required: false
+    default: 'europe-west1'
+  allow:
+    description: 'Allow unauthenticated traffic'
+    required: false
+    default: false
+  port:
+    description: 'Port to expose'
+    required: false
+    default: 80
+  image:
+    description: 'Image name'
+    required: true
+    default: 'gcr.io/cloud-marketplace/google/nginx1:latest'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.email }}
+    - ${{ inputs.auth_file }}
+    - ${{ inputs.action }}
+    - ${{ inputs.name }}
+    - ${{ inputs.region }}
+    - ${{ inputs.port }}
+    - ${{ inputs.image }}
+    - ${{ inputs.allow }}
