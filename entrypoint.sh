@@ -14,7 +14,7 @@ ALLOW=$8
 echo $AUTH_FILE | base64 --decode > /tmp/auth.json
 
 # Activate account
-if gcloud auth activate-service-account $EMAIL --key-file=$/tmp/auth.json ; then
+if gcloud auth activate-service-account $EMAIL --key-file=/tmp/auth.json ; then
     echo "Authentication successful"
 else
     echo "Authentication faild"
