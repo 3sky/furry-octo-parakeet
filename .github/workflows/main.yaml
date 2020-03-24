@@ -8,7 +8,6 @@ jobs:
     - name: deploy yo stg
       uses: 3sky/furry-octo-parakeet@v0.0.16
       with:
-        email: ${{ secrets.GH_EMAIL }}
         auth_file: ${{ secrets.GCP_SA_KEY }}
         action: 'run'
         name: 'basic-nginx'

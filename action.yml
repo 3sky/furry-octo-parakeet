@@ -6,10 +6,6 @@ branding:
   icon: 'check-square'
   color: 'white'
 inputs:
-  email:
-    description: 'Email of service account'
-    required: true
-    default: 'my-json-server.typicode.com'
   auth_file:
     description: 'Auth file encoded with base64'
     required: true
@@ -42,7 +38,6 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - ${{ inputs.email }}
     - ${{ inputs.auth_file }}
     - ${{ inputs.action }}
     - ${{ inputs.name }}
