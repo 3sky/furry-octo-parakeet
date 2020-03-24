@@ -6,7 +6,7 @@ jobs:
     name: Mega deploy
     steps:
     - name: deploy yo stg
-      uses: 3sky/furry-octo-parakeet@v0.0.21
+      uses: 3sky/furry-octo-parakeet@v0.0.22
       with:
         auth_file: ${{ secrets.GCP_SA_KEY }}
         action: 'delete'
