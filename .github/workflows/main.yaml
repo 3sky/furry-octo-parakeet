@@ -6,11 +6,11 @@ jobs:
     name: Mega deploy
     steps:
     - name: deploy yo stg
-      uses: 3sky/furry-octo-parakeet@v0.0.13
+      uses: 3sky/furry-octo-parakeet@v0.0.14
       with:
         email: ${{ secrets.GH_EMAIL }}
         auth_file: ${{ secrets.GCP_SA_KEY }}
         action: 'run'
         name: 'basic-nginx'
         region: 'europe-west1'
-        image: 'gcr.io/cloud-marketplace/google/nginx1:latest'
+        image: 'gcr.io/cloud-marketplace/google/nginx:latest'

@@ -10,7 +10,7 @@ PORT=$6
 IMAGE=$7
 ALLOW=$8
 
-echo $EMAIL | base64 --decode > /tmp/auth.json
+echo "$AUTH_FILE" | base64 --decode > /tmp/auth.json
 chmod 777 /tmp/auth.json
 cat /tmp/auth.json
 
