@@ -12,4 +12,4 @@ jobs:
         action: 'run'
         name: 'basic-nginx'
         region: 'europe-west1'
-        image: 'gcr.io/cloud-marketplace/google/nginx:latest'
+        image: 'gcr.io/cloud-marketplace/google/nginx1:latest'
