@@ -10,7 +10,7 @@ jobs:
         echo "${{ secrets.GCP_SA_KEY }}" | base64 --decode > /tmp/auth.json
         chmod 600 /tmp/auth.json
     - name: deploy yo stg
-      uses: 3sky/furry-octo-parakeet@v0.0.9
+      uses: 3sky/furry-octo-parakeet@v0.0.10
       with:
         email: ${{ secrets.GH_EMAIL }}
         auth_file: ${{ secrets.GCP_SA_KEY }}
