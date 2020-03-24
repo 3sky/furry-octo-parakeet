@@ -10,11 +10,6 @@ PORT=$6
 IMAGE=$7
 ALLOW=$8
 
-# Make temp authfile
-echo $AUTH_FILE > /tmp/encode_auth.json
-cat /tmp/encode_auth.json
-cat /tmp/encode_auth.json | base64 --decode > /tmp/auth.json
-
 # Activate account
 if gcloud auth activate-service-account $EMAIL --key-file=/tmp/auth.json ; then
     echo "Authentication successful"

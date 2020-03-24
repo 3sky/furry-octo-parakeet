@@ -5,6 +5,10 @@ jobs:
     runs-on: ubuntu-latest
     name: Mega deploy
     steps:
+    - name: Make secret working
+      run: |
+        echo "${{ secrets.GCP_SA_KEY }}" | base64 --decode > /tmp/auth.json
+        chmod 600 /tmp/auth.json
     - name: deploy yo stg
       uses: 3sky/furry-octo-parakeet@v0.0.9
       with:
