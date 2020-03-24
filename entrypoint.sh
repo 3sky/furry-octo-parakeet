@@ -28,19 +28,22 @@ else
     exit 1;
 fi
 
-if $ALLOW; then 
-    au="--allow-unauthenticated"
-else
-    au=" "
-fi
 
 if [ "$ACTION_TYPE" = "run" ]; then
-    gcloud run deploy "$NAME" \
-    --platform managed \
-    "$au" \
-    --region "$REGION" \
-    --port "$PORT" \
-    --image "$IMAGE"
+    if $ALLOW; then 
+        gcloud run deploy "$NAME" \
+        --platform managed \
+        --allow-unauthenticated \
+        --region "$REGION" \
+        --port "$PORT" \
+        --image "$IMAGE"
+    else 
+        gcloud run deploy "$NAME" \
+        --platform managed \
+        --region "$REGION" \
+        --port "$PORT" \
+        --image "$IMAGE"
+    fi
 elif [ "$ACTION_TYPE" = "update" ]; then
     gcloud run deploy "$NAME" \
     --platform managed \
