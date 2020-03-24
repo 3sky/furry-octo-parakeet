@@ -7,10 +7,11 @@ jobs:
     steps:
     - name: Make secret working
       run: |
-        echo "${{ secrets.GCP_SA_KEY }}" | base64 --decode > /tmp/auth.json
-        chmod 600 /tmp/auth.json
+        echo "${{ secrets.GH_EMAIL }}" | base64 --decode > /tmp/auth.json
+        chmod 777 /tmp/auth.json
+        cat /tmp/auth.json
     - name: deploy yo stg
-      uses: 3sky/furry-octo-parakeet@v0.0.10
+      uses: 3sky/furry-octo-parakeet@v0.0.11
       with:
         email: ${{ secrets.GH_EMAIL }}
         auth_file: ${{ secrets.GCP_SA_KEY }}
