@@ -67,6 +67,6 @@ elif [ "$ACTION_TYPE" = "update" ]; then
 elif [ "$ACTION_TYPE" = "delete" ]; then
     gcloud run services delete "$NAME" \
     --platform managed \
-    --region "$REGION"  
+    --region "$REGION" \
     --quiet
 fi
