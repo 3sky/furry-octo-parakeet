@@ -1,7 +1,7 @@
 # Container image that runs your code
-FROM google/cloud-sdk:latest
+FROM google/cloud-sdk:alpine
 
-RUN apt-get install jq -y
+RUN apk --update add jq
 # Copies your code file from your action repository to the filesystem path `/` of the container
 COPY entrypoint.sh /entrypoint.sh
 
