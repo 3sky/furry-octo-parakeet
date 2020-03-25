@@ -9,7 +9,7 @@ jobs:
       uses: 3sky/furry-octo-parakeet@v0.0.25
       with:
         auth_file: ${{ secrets.GCP_SA_KEY }}
-        action: 'run'
+        action: 'update'
         name: 'basic-nginx'
         region: 'europe-west1'
-        image: 'gcr.io/cloud-marketplace/google/nginx1:latest'
+        image: 'gcr.io/cloud-marketplace/google/nginx:1.15'
