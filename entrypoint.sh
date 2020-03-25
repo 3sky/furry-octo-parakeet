@@ -55,7 +55,7 @@ if [ "$ACTION_TYPE" = "run" ]; then
         --allow-unauthenticated \
         --region "$REGION" \
         --port "$PORT" \
-        --image "$IMAGE"| grep 'has been deployed' | awk -F'https://' '{print "https://" $NF}')
+        --image "$IMAGE")
     else 
        out=$(gcloud run deploy "$NAME" \
         --platform managed \
