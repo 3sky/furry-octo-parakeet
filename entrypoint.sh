@@ -50,24 +50,24 @@ fi
 
 if [ "$ACTION_TYPE" = "run" ]; then
     if $ALLOW; then 
-        out=$(gcloud run deploy "$NAME" \
+        gcloud run deploy "$NAME" \
         --platform managed \
         --allow-unauthenticated \
         --region "$REGION" \
         --port "$PORT" \
-        --image "$IMAGE")
+        --image "$IMAGE"
     else 
-       out=$(gcloud run deploy "$NAME" \
+        gcloud run deploy "$NAME" \
         --platform managed \
         --region "$REGION" \
         --port "$PORT" \
-        --image "$IMAGE"| grep 'has been deployed' | awk -F'https://' '{print "https://" $NF}')
+        --image "$IMAGE"
     fi
 elif [ "$ACTION_TYPE" = "update" ]; then
-    out=$(gcloud run deploy "$NAME" \
+    gcloud run deploy "$NAME" \
     --platform managed \
     --region "$REGION" \
-    --image "$IMAGE"| grep 'has been deployed' | awk -F'https://' '{print "https://" $NF}')
+    --image "$IMAGE"
 elif [ "$ACTION_TYPE" = "delete" ]; then
     gcloud run services delete "$NAME" \
     --platform managed \
@@ -76,5 +76,4 @@ elif [ "$ACTION_TYPE" = "delete" ]; then
 fi
 
 
-echo "::set-output name=service_url::$out"
 
