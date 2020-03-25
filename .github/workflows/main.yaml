@@ -6,7 +6,7 @@ jobs:
     name: Mega deploy
     steps:
     - name: deploy app
-      uses: 3sky/furry-octo-parakeet@v0.1.4
+      uses: 3sky/furry-octo-parakeet@master
       with:
         auth_file: ${{ secrets.gcp_sa_key }}
         action: 'run'
@@ -16,7 +16,7 @@ jobs:
         image: 'gcr.io/cloud-marketplace/google/nginx1:latest'
     
     - name: update app
-      uses: 3sky/furry-octo-parakeet@v0.1.4
+      uses: 3sky/furry-octo-parakeet@master
       with:
         auth_file: ${{ secrets.gcp_sa_key }}
         action: 'update'
@@ -25,7 +25,7 @@ jobs:
         image: 'gcr.io/cloud-marketplace/google/nginx:1.15'
     
     - name: destroy app
-      uses: 3sky/furry-octo-parakeet@v0.1.4
+      uses: 3sky/furry-octo-parakeet@master
       with:
         auth_file: ${{ secrets.gcp_sa_key }}
         action: 'delete'
