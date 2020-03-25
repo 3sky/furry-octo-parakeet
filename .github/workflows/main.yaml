@@ -5,11 +5,29 @@ jobs:
     runs-on: ubuntu-latest
     name: Mega deploy
     steps:
-    - name: deploy yo stg
+    - name: deploy app
       uses: 3sky/furry-octo-parakeet@v0.0.25
       with:
-        auth_file: ${{ secrets.GCP_SA_KEY }}
+        auth_file: ${{ secrets.gcp_sa_key }}
+        action: 'run'
+        name: 'basic-nginx'
+        region: 'europe-west1'
+        allow: true
+        image: 'gcr.io/cloud-marketplace/google/nginx1:latest'
+    
+    - name: update app
+      uses: 3sky/furry-octo-parakeet@v0.0.25
+      with:
+        auth_file: ${{ secrets.gcp_sa_key }}
         action: 'update'
         name: 'basic-nginx'
         region: 'europe-west1'
         image: 'gcr.io/cloud-marketplace/google/nginx:1.15'
+    
+    - name: deploy app
+      uses: 3sky/furry-octo-parakeet@v0.0.25
+      with:
+        auth_file: ${{ secrets.gcp_sa_key }}
+        action: 'delete'
+        name: 'basic-nginx'
+        region: 'europe-west1'
