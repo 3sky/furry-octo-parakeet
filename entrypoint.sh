@@ -10,16 +10,20 @@ IMAGE=$6
 ALLOW=$7
 PROJECT_ID=$8
 
+
+# Generate random filename
+FILENAME=$(mktemp)
+
 # Encode GH secret
-echo "$AUTH_FILE" | base64 -d > /tmp/auth.json
-chmod 777 /tmp/auth.json
+echo "$AUTH_FILE" | base64 -d > "$FILENAME"
+chmod 600 "$FILENAME"
 
 # Get project_id and EMAIL
-PROJECT_ID=$(jq -r .project_id /tmp/auth.json)
-EMAIL=$(jq -r .client_email /tmp/auth.json)
+PROJECT_ID=$(jq -r .project_id "$FILENAME")
+EMAIL=$(jq -r .client_email "$FILENAME")
 
 # Activate account
-if gcloud auth activate-service-account "$EMAIL" --key-file=/tmp/auth.json ; then
+if gcloud auth activate-service-account "$EMAIL" --key-file="$FILENAME" ; then
     echo "Authentication successful"
 else
     echo "Authentication faild"
