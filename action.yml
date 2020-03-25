@@ -34,6 +34,9 @@ inputs:
     description: 'Image name'
     required: true
     default: 'gcr.io/cloud-marketplace/google/nginx1:latest'
+outputs:
+  service_url:
+    description: 'Deployed service URL'
 runs:
   using: 'docker'
   image: 'Dockerfile'
