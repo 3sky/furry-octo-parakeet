@@ -3,8 +3,8 @@ name: 'Cloud Run helper'
 author: '3sky'
 description: 'Deploy, update or delete your Cloud Run service'
 branding:
-  icon: 'check-square'
-  color: 'white'
+  icon: 'terminal'
+  color: 'green'
 inputs:
   auth_file:
     description: 'Auth file encoded with base64'
