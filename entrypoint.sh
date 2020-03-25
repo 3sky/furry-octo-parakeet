@@ -11,7 +11,7 @@ ALLOW=$7
 PROJECT_ID=$8
 
 # Encode GH secret
-echo "$AUTH_FILE" | base64 --decode > /tmp/auth.json
+echo "$AUTH_FILE" | base64 -d > /tmp/auth.json
 chmod 777 /tmp/auth.json
 
 # Get project_id and EMAIL
