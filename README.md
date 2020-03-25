@@ -9,9 +9,10 @@ or accounts e-mail is taken from encoded JSON file.
 
 To encode file run:
 
-	```bash
-	cat auth,json | base64
-	```
+```bash
+cat auth.json | base64
+```
+
 Then store it as a GitHub Secret.
 
 ## Inputs
@@ -49,40 +50,40 @@ Then store it as a GitHub Secret.
 
 - Run new service
 
-```yaml
-- name: Run new service  
-  uses: 3sky/furry-octo-parakeet@master
-  with:
-	auth_file: ${{ secrets.gcp_sa_key }}
-	action: 'run'
-	name: 'basic-nginx'
-	region: 'europe-west1'
-	allow: true
-	image: 'gcr.io/cloud-marketplace/google/nginx1:latest'
-```
+    ```yaml
+    - name: Run new service  
+      uses: 3sky/furry-octo-parakeet@master
+      with:
+        auth_file: ${{ secrets.gcp_sa_key }}
+        action: 'run'
+        name: 'basic-nginx'
+        region: 'europe-west1'
+        allow: true
+        image: 'gcr.io/cloud-marketplace/google/nginx1:latest'
+    ```
 
 - Update service
 
-```yaml
-- name: update app
-  uses: 3sky/furry-octo-parakeet@master
-  with:
-	auth_file: ${{ secrets.gcp_sa_key }}
-	action: 'update'
-	name: 'basic-nginx'
-	region: 'europe-west1'
-	image: 'gcr.io/cloud-marketplace/google/nginx:1.15'
-```
+    ```yaml
+    - name: update app
+      uses: 3sky/furry-octo-parakeet@master
+      with:
+        auth_file: ${{ secrets.gcp_sa_key }}
+        action: 'update'
+        name: 'basic-nginx'
+        region: 'europe-west1'
+        image: 'gcr.io/cloud-marketplace/google/nginx:1.15'
+    ```
 
 - Delete service
 
-```yaml
-- name: Delete service
-  uses: 3sky/furry-octo-parakeet@master
-  with:
-	auth_file: ${{ secrets.gcp_sa_key }}
-	action: 'delete'
-	name: 'basic-nginx'
-	region: 'europe-west1'
-```
+    ```yaml
+    - name: Delete service
+      uses: 3sky/furry-octo-parakeet@master
+      with:
+        auth_file: ${{ secrets.gcp_sa_key }}
+        action: 'delete'
+        name: 'basic-nginx'
+        region: 'europe-west1'
+    ```
 
